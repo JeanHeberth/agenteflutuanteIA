@@ -1,0 +1,28 @@
+# Gradle
+/build/
+/.gradle/
+!gradle/wrapper/gradle-wrapper.jar
+
+# IDEs
+/.idea/
+*.iml
+*.ipr
+*.iws
+
+# OS
+.DS_Store
+
+# Logs
+*.log
+
+# Others
+/out/
+
+# Spring Boot
+*.jar
+*.war
+*.ear
+
+# Testcontainers
+/testcontainers.properties
+
