@@ -26,3 +26,9 @@
 # Testcontainers
 /testcontainers.properties
 
+# Agents
+/agents/
+
+# Environment
+.env
+

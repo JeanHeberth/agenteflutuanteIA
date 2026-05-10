@@ -1,0 +1,13 @@
+spring:
+  application:
+    name: agenteflutuanteia
+  data:
+    mongodb:
+      uri: "${MONGODB_URI}"
+      database: "${MONGODB_NAME}"
+
+server:
+  port: "${SERVER_PORT}"
+
+openai:
+  api-key: "${OPENAI_API_KEY:}"
