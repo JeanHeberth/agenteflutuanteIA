@@ -6,20 +6,19 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.client.RestClient;
 
 @Configuration
-public class OpenAiConfig {
+public class AiClientConfig {
 
-    @Value("${gemini.api-key}")
-    private String apiKey;
 
     @Value("${gemini.api-url}")
     private String apiUrl;
 
     @Bean
-    public RestClient openAiRestClient() {
+    public RestClient aiRestClient() {
         return RestClient.builder()
                 .baseUrl(apiUrl)
                 .defaultHeader("Content-Type", "application/json")
                 .build();
     }
 }
+
 
