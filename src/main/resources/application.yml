@@ -7,7 +7,11 @@ spring:
       database: "${MONGODB_NAME}"
 
 server:
-  port: "${SERVER_PORT}"
+  port: "${SERVER_PORT:8089}"
 
-openai:
-  api-key: "${OPENAI_API_KEY:}"
+gemini:
+  api-key: "${GEMINI_API_KEY}"
+  model: gemini-1.5-flash
+  api-url: "https://generativelanguage.googleapis.com/v1beta/models"
+chat:
+  system-prompt: "Você é um assistente inteligente e prestativo. Responda de forma clara, objetiva e em português."
