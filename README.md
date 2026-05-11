@@ -54,7 +54,7 @@ Crie um arquivo `.env` na raiz do projeto (`agenteflutuanteIA/`) com as seguinte
 MONGODB_URI=mongodb+srv://<usuario>:<senha>@<cluster>.mongodb.net/<database>
 
 # Servidor
-SERVER_PORT=8089
+SERVER_PORT=9998
 
 # Google Gemini
 GEMINI_API_KEY=sua_chave_aqui
@@ -80,7 +80,7 @@ cd agenteflutuanteIA
 java -jar build/libs/agenteflutuanteia-0.0.1-SNAPSHOT.jar
 ```
 
-O backend sobe em: **http://localhost:8089**
+O backend sobe em: **http://localhost:9998**
 
 ---
 
@@ -94,7 +94,7 @@ npm run dev
 
 O frontend sobe em: **http://localhost:3000**
 
-> ⚡ O Vite está configurado com proxy para `/ws` e `/api` apontando para `http://localhost:8089`, então nenhuma configuração extra de CORS é necessária em desenvolvimento.
+> ⚡ O Vite está configurado com proxy para `/ws` e `/api` apontando para `http://localhost:9998`, então nenhuma configuração extra de CORS é necessária em desenvolvimento.
 
 ### Build de produção
 

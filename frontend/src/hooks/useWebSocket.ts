@@ -3,6 +3,8 @@ import { Client, type IMessage } from '@stomp/stompjs';
 import SockJS from 'sockjs-client';
 import type { Message } from '../types/chat';
 
+const API_BASE_URL = '/agenteflutuanteia';
+
 export function useWebSocket(sessionId: string) {
   const clientRef = useRef<Client | null>(null);
   const [connected, setConnected] = useState(false);
@@ -11,16 +13,19 @@ export function useWebSocket(sessionId: string) {
 
   useEffect(() => {
     const client = new Client({
-      webSocketFactory: () => new SockJS('/ws'),
+      webSocketFactory: () => new SockJS(`${API_BASE_URL}/ws`),
       reconnectDelay: 5000,
+
       onConnect: () => {
         setConnected(true);
+
         client.subscribe(`/topic/chat/${sessionId}`, (msg: IMessage) => {
           const response: Message = JSON.parse(msg.body);
           setMessages(prev => [...prev, response]);
           setLoading(false);
         });
       },
+
       onDisconnect: () => setConnected(false),
       onStompError: () => setConnected(false),
     });
@@ -54,9 +59,17 @@ export function useWebSocket(sessionId: string) {
 
   const clearMessages = useCallback(() => {
     setMessages([]);
-    fetch(`/api/chat/session/${sessionId}`, { method: 'DELETE' }).catch(console.error);
+
+    fetch(`${API_BASE_URL}/api/chat/session/${sessionId}`, {
+      method: 'DELETE',
+    }).catch(console.error);
   }, [sessionId]);
 
-  return { connected, messages, loading, sendMessage, clearMessages };
+  return {
+    connected,
+    messages,
+    loading,
+    sendMessage,
+    clearMessages
+  };
 }
-
