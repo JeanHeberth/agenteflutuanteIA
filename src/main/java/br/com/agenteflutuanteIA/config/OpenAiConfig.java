@@ -19,7 +19,6 @@ public class OpenAiConfig {
         return RestClient.builder()
                 .baseUrl(apiUrl)
                 .defaultHeader("Content-Type", "application/json")
-                .defaultHeader("x-goog-api-key", apiKey)
                 .build();
     }
 }

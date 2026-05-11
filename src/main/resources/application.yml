@@ -10,8 +10,10 @@ server:
   port: "${SERVER_PORT:8089}"
 
 gemini:
-  api-key: "${GEMINI_API_KEY}"
-  model: gemini-1.5-flash
-  api-url: "https://generativelanguage.googleapis.com/v1beta/models"
+  api-key: "${GEMINI_API_KEY:}"
+  model: "gemini-2.5-flash"
+  api-url: "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent"
+
+
 chat:
   system-prompt: "Você é um assistente inteligente e prestativo. Responda de forma clara, objetiva e em português."
