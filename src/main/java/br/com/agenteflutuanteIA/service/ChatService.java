@@ -21,7 +21,7 @@ public class ChatService {
     private static final Logger LOGGER = LoggerFactory.getLogger(ChatService.class);
 
     private final ChatSessionRepository chatSessionRepository;
-    private final OpenAiService openAiService;
+    private final AiService aiService;
 
     public ChatMessage processMessage(String sessionId, String userContent) {
         // Busca ou cria a sessão
@@ -37,7 +37,7 @@ public class ChatService {
                 .build();
         session.getMessages().add(userMessage);
 
-        // Monta histórico para OpenAI
+        // Monta histórico para o provedor de IA
         List<Map<String, String>> history = session.getMessages().stream()
                 .map(msg -> Map.of("role", msg.getRole(), "content", msg.getContent()))
                 .toList();
@@ -45,8 +45,8 @@ public class ChatService {
         ChatMessage assistantMessage;
 
         try {
-            // Chama OpenAI
-            String aiContent = openAiService.chat(history);
+            // Chama o provedor de IA
+            String aiContent = aiService.chat(history);
 
             // Salva resposta da IA
             assistantMessage = ChatMessage.builder()
