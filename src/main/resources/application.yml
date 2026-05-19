@@ -5,11 +5,11 @@ spring:
 
   data:
     mongodb:
-      uri: "${MONGODB_URI}"
+      uri: "${MONGO_URI_NUVEM}/agenteflutuanteia?retryWrites=true&w=majority"
 
 
 server:
-  port: "${SERVER_PORT:9998}"
+  port: "9098"
 
 logging:
   level:
